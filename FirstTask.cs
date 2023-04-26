@@ -2,29 +2,31 @@ namespace Library
 {
     public class ZadanieOne
     {
-        public void One()
+        public void Sequence_of_numbers()
         {
-            Console.Write("Введите число N: ");
-            int n = int.Parse(Console.ReadLine());
+            int n;
+            do
+            {
+                Console.Write("Введите число N: ");
+            } while (!int.TryParse(Console.ReadLine(), out n));
             string result = string.Join(", ", Enumerable.Range(1, n));
             Console.WriteLine(result);
         }
     }
     public class ZadanieTwo
     {
-        public static void Two()
+        public static void Square()
         {
-            Console.Write("Введите нечетное число N: ");
-            int n = int.Parse(Console.ReadLine());
-            if (n % 2 == 0) // If N is an even number, exit the function.
+            int n;
+            do
             {
-                Console.WriteLine("Вы ввели четное N.");
-                return;
-            }            
-            for (int row = 1; row <= n; row++) {
-                for (int col = 1; col <= n; col++) {
-                    if (row == n / 2 + 1 && col == n / 2 + 1) Console.Write(" ");
-                    else Console.Write("#");                    
+                Console.Write("Введите нечетное число N: ");
+            } while (!int.TryParse(Console.ReadLine(), out n) || (n % 2 == 0) || (n < 3));
+            for (int row = 1; row <= n; row++)
+            {
+                for (int col = 1; col <= n; col++)
+                {
+                    Console.Write(row == n / 2 + 1 && col == n / 2 + 1 ? " " : "#");
                 }
                 Console.WriteLine();
             }
